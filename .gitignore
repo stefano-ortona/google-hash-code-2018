@@ -3,3 +3,13 @@
 .project
 .settings/
 *.DS_Store
+bin/LICENSE
+bin/pom.xml
+bin/README.md
+bin/src/main/java/google/com/fgeneration/hashcode_2018/App.class
+bin/src/main/java/google/com/fgeneration/hashcode_2018/logic/Placeholder.class
+bin/src/main/java/google/com/fgeneration/hashcode_2018/model/Placeholder.class
+bin/src/main/resources/log4j2.xml
+bin/src/main/resources/google/com/fgeneration/hashcode_2018/appResource.txt
+bin/src/test/java/google/com/fgeneration/hashcode_2018/AppTest.class
+bin/src/test/resources/google/com/fgeneration/hashcode_2018/testResource.txt
