@@ -13,3 +13,5 @@ bin/src/main/resources/log4j2.xml
 bin/src/main/resources/google/com/fgeneration/hashcode_2018/appResource.txt
 bin/src/test/java/google/com/fgeneration/hashcode_2018/AppTest.class
 bin/src/test/resources/google/com/fgeneration/hashcode_2018/testResource.txt
+/.idea/
+*.iml
