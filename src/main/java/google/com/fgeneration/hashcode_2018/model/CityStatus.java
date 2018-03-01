@@ -32,7 +32,38 @@ public class CityStatus {
     driver.lastPositon = ride.getEnd();
     // TODO - modify next available time of the driver
     return ride;
+  }
 
+  public List<Driver> getDrivers() {
+    return drivers;
+  }
+
+  public void setDrivers(List<Driver> drivers) {
+    this.drivers = drivers;
+  }
+
+  public List<Ride> getRides() {
+    return rides;
+  }
+
+  public void setRides(List<Ride> rides) {
+    this.rides = rides;
+  }
+
+  public int getMaxTime() {
+    return maxTime;
+  }
+
+  public void setMaxTime(int maxTime) {
+    this.maxTime = maxTime;
+  }
+
+  public BestScoreRide getBestScore() {
+    return bestScore;
+  }
+
+  public void setBestScore(BestScoreRide bestScore) {
+    this.bestScore = bestScore;
   }
 
 }
