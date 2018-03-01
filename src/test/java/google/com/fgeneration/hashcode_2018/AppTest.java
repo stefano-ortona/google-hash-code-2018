@@ -41,6 +41,8 @@ public class AppTest {
 
   @Test
   public void testExample() {
+	  System.out.println("TEST PRINT %%% Test 0");
+	  System.out.println("TEST PRINT %%% ");
 	  // create drivers
 	  Driver driver0 = new Driver(0);
 	  Driver driver1 = new Driver(1);
@@ -56,7 +58,7 @@ public class AppTest {
 	  rides.add(ride1);
 	  rides.add(ride2);
 	  // create city status
-	  CityStatus status = new CityStatus(new DefaultScoreRide(), 2);
+	  CityStatus status = new CityStatus(new DefaultScoreRide(), 2, 3, 4);
 	  status.setDrivers(drivers);
 	  status.setRides(rides);
 	  status.setMaxTime(10);
@@ -67,16 +69,18 @@ public class AppTest {
 	  // check the output
 	  for(Driver d:output.keySet()) {
 		List<Ride> driver_rides = output.get(d);
-		System.out.print("Driver ");
-		System.out.println(d);
-		System.out.println("");
+		System.out.print("TEST PRINT %%% Driver ");
+		System.out.println("TEST PRINT %%%" + d);
+		System.out.println("TEST PRINT %%% ");
 		for(Ride r:driver_rides) {
-			System.out.print("Rides: ");
-			System.out.println(r);
+			System.out.print("TEST PRINT %%% Rides: ");
+			System.out.println("TEST PRINT %%%" + r);
 		}
-		System.out.println("-----------------------------");
-		System.out.println("-----------------------------");
+		System.out.println("TEST PRINT %%% -----------------------------");
+		System.out.println("TEST PRINT %%% -----------------------------");
 	  }
+	  System.out.println("TEST PRINT %%% ################");
+	  System.out.println("TEST PRINT %%% ################");
 	  
   }
 
