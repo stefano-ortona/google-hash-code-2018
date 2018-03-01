@@ -12,6 +12,9 @@ import google.com.fgeneration.hashcode_2018.utils.Utils;
 public abstract class BestScoreRide {
 
 	public Ride getBestRide(Driver driver, CityStatus status) {
+		if (status.getRides() == null || status.getRides().isEmpty()) {
+			return null;
+		}
 		Map<Double, Ride> scoreMap = new HashMap<>();
 		for (Ride ride : status.getRides()) {
 			if (isValid(driver, ride)) {
