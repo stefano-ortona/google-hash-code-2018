@@ -9,8 +9,7 @@ public class DefaultScoreRide extends BestScoreRide {
 
 	@Override
 	public double getScore(Driver driver, Ride ride, CityStatus status) {
-		double distanceScore = Utils.getDistance(driver.getLastPositon(),  ride.getStart());
-		return distanceScore;
+		return - Utils.getDistance(driver.getLastPositon(),  ride.getStart());
 	}
 
 }
