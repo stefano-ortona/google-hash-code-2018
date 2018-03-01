@@ -11,9 +11,11 @@ public class CityStatus {
   List<Ride> rides;
   int maxTime;
   BestScoreRide bestScore;
+  int bonus;
 
-  public CityStatus(BestScoreRide bestScore) {
+  public CityStatus(BestScoreRide bestScore, int bonus) {
     this.bestScore = bestScore;
+    this.bonus = bonus;
 
   }
 
@@ -64,6 +66,14 @@ public class CityStatus {
 
   public void setBestScore(BestScoreRide bestScore) {
     this.bestScore = bestScore;
+  }
+
+  public int getBonus() {
+    return bonus;
+  }
+
+  public void setBonus(int bonus) {
+    this.bonus = bonus;
   }
 
 }
