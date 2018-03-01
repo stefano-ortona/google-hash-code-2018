@@ -100,4 +100,10 @@ public class Ride {
   int minStartTime;
   int maxEndTime;
 
+  @Override
+  public String toString() {
+    return this.id +"_[" + this.getStart().toString() + "," + this.getEnd().toString()  + "," + this.minStartTime + "," + this.maxEndTime + "]";
+  }
+
+
 }

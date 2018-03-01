@@ -1,5 +1,7 @@
 package google.com.fgeneration.hashcode_2018.model;
 
+import java.util.Objects;
+
 public class Intersection {
 
   int row;
@@ -26,5 +28,26 @@ public class Intersection {
   }
 
   int column;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Intersection that = (Intersection) o;
+    return row == that.row &&
+            column == that.column;
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(row, column);
+  }
+
+  @Override
+  public String toString() {
+    return "Intersection[" + this.row + "," + this.column + "]";
+  }
+
 
 }
