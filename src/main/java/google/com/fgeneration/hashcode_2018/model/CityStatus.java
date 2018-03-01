@@ -12,11 +12,14 @@ public class CityStatus {
   int maxTime;
   BestScoreRide bestScore;
   int bonus;
+  int row;
+  int column;
 
-  public CityStatus(BestScoreRide bestScore, int bonus) {
+  public CityStatus(BestScoreRide bestScore, int bonus, int row, int column) {
     this.bestScore = bestScore;
     this.bonus = bonus;
-
+    this.row = row;
+    this.column = column;
   }
 
   public List<Driver> getAvailableDrivers(int time) {
@@ -74,6 +77,22 @@ public class CityStatus {
 
   public void setBonus(int bonus) {
     this.bonus = bonus;
+  }
+
+  public int getRow() {
+    return row;
+  }
+
+  public void setRow(int row) {
+    this.row = row;
+  }
+
+  public int getColumn() {
+    return column;
+  }
+
+  public void setColumn(int column) {
+    this.column = column;
   }
 
 }
