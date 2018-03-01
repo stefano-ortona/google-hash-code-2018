@@ -66,15 +66,20 @@ public class AppTest {
       // get the output
 	  Map<Driver, List<Ride>> output = logic.assignAllRides(status);
 	  
+	  List <Ride> takenRides = new ArrayList<Ride>();
 	  // check the output
 	  for(Driver d:output.keySet()) {
+		Assert.assertTrue(drivers.contains(d));
 		List<Ride> driver_rides = output.get(d);
 		System.out.print("TEST PRINT %%% Driver ");
 		System.out.println("TEST PRINT %%%" + d);
 		System.out.println("TEST PRINT %%% ");
 		for(Ride r:driver_rides) {
+			Assert.assertFalse(takenRides.contains(r));
 			System.out.print("TEST PRINT %%% Rides: ");
 			System.out.println("TEST PRINT %%%" + r);
+			takenRides.add(r);
+			Assert.assertTrue(takenRides.contains(r));
 		}
 		System.out.println("TEST PRINT %%% -----------------------------");
 		System.out.println("TEST PRINT %%% -----------------------------");
