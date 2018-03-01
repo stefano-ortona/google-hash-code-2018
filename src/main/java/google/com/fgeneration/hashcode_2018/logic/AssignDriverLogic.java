@@ -21,7 +21,11 @@ public class AssignDriverLogic {
 
     final Map<Driver, List<Ride>> output = Maps.newHashMap();
     int totScore = 0;
+    boolean isFinished = false;
     for (int instant = 0; instant < status.getMaxTime(); instant++) {
+      if (isFinished) {
+        break;
+      }
       final List<Driver> nextAvailableDrivers = status.getAvailableDrivers(instant);
       LOGGER.info("Round {}, there are {} available drivers to assign. (Round {} out of {})", instant,
           nextAvailableDrivers.size(), instant, status.getMaxTime());
@@ -37,7 +41,12 @@ public class AssignDriverLogic {
           curDriverRide.add(curRide);
           output.put(driver, curDriverRide);
         } else {
-          // TODO: maybe can remove driver from the list
+          status.getDrivers().remove(driver);
+        }
+        if (status.getRides().isEmpty()) {
+          LOGGER.info("All rides have been satisfied motherfucker!");
+          isFinished = true;
+          break;
         }
       }
     }
