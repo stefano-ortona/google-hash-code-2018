@@ -29,7 +29,7 @@ public class AssignDriverLogic {
         final Ride curRide = status.assignNextBestRide(driver);
         if (curRide != null) {
           totScore += Utils.getDistance(curRide.getStart(), curRide.getEnd());
-          if (gotBonusForRide(driver, curRide)) {
+          if (Utils.gotBonusForRide(driver, curRide)) {
             totScore += status.getBonus();
           }
           final List<Ride> curDriverRide = output.getOrDefault(driver, Lists.newArrayList());
