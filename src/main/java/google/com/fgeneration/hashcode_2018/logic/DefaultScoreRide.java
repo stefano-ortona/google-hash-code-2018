@@ -6,15 +6,19 @@ import google.com.fgeneration.hashcode_2018.model.Ride;
 import google.com.fgeneration.hashcode_2018.utils.Utils;
 
 public class DefaultScoreRide extends BestScoreRide {
+	
+	private static double DISTANCE_WEIGHT = 1.0;
+	private static double RIDE_LENGHT_WEIGHT = 1.0;
+	private static double BONUS_WEIGHT = 1.0;
 
 	@Override
 	public double getScore(Driver driver, Ride ride, CityStatus status) {
-		int distanceScore = Utils.getDistance(driver.getLastPositon(),  ride.getStart());
+		double distanceScore = DISTANCE_WEIGHT * Utils.getDistance(driver.getLastPositon(),  ride.getStart());
 
-		int rideLength = Utils.getDistance(ride.getStart(), ride.getEnd());
+		double rideLength = RIDE_LENGHT_WEIGHT * Utils.getDistance(ride.getStart(), ride.getEnd());
 
-		int bonus = (Utils.gotBonusForRide(driver, ride) ? status.getBonus() : 0);
-
+		double bonus = BONUS_WEIGHT * (Utils.gotBonusForRide(driver, ride) ? status.getBonus() : 0);
+		
 		return rideLength 
 				+ bonus
 				- distanceScore;
