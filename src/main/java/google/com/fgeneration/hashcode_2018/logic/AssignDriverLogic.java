@@ -29,6 +29,9 @@ public class AssignDriverLogic {
         final Ride curRide = status.assignNextBestRide(driver);
         if (curRide != null) {
           totScore += Utils.getDistance(curRide.getStart(), curRide.getEnd());
+          if (Utils.gotBonusForRide(driver, curRide)) {
+            totScore += status.getBonus();
+          }
           final List<Ride> curDriverRide = output.getOrDefault(driver, Lists.newArrayList());
           curDriverRide.add(curRide);
         } else {
@@ -36,11 +39,8 @@ public class AssignDriverLogic {
         }
       }
     }
+    LOGGER.info("Total score for the current solution: '{}'.", totScore);
     return output;
-  }
-
-  private boolean gotBonusForRide(final Driver driver, final Ride ride) {
-
   }
 
 }
