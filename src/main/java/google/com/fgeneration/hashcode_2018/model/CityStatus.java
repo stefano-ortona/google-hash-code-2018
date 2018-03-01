@@ -24,7 +24,11 @@ public class CityStatus {
 
   public List<Driver> getAvailableDrivers(int time) {
     final List<Driver> drivers = Lists.newArrayList();
-
+    for (final Driver d : this.drivers) {
+      if (d.getNextAvailableTime() <= time) {
+        drivers.add(d);
+      }
+    }
     return drivers;
   }
 
@@ -34,8 +38,6 @@ public class CityStatus {
       return null;
     }
     this.rides.remove(ride);
-    driver.lastPositon = ride.getEnd();
-    // TODO - modify next available time of the driver
     return ride;
   }
 

@@ -32,8 +32,10 @@ public class AssignDriverLogic {
           if (Utils.gotBonusForRide(driver, curRide)) {
             totScore += status.getBonus();
           }
+          this.modifyDriver(driver, curRide);
           final List<Ride> curDriverRide = output.getOrDefault(driver, Lists.newArrayList());
           curDriverRide.add(curRide);
+          output.put(driver, curDriverRide);
         } else {
           // TODO: maybe can remove driver from the list
         }
@@ -41,6 +43,18 @@ public class AssignDriverLogic {
     }
     LOGGER.info("Total score for the current solution: '{}'.", totScore);
     return output;
+  }
+
+  private void modifyDriver(Driver driver, Ride ride) {
+    final int driverAtPositionStart = driver.getNextAvailableTime()
+        + Utils.getDistance(driver.getLastPositon(), ride.getStart());
+    int startRide = driverAtPositionStart;
+    if (driverAtPositionStart < ride.getMinStartTime()) {
+      startRide = ride.getMinStartTime();
+    }
+    final int nextAvailableTime = startRide + Utils.getDistance(ride.getStart(), ride.getEnd());
+    driver.setNextAvailableTime(nextAvailableTime);
+    driver.setLastPositon(ride.getEnd());
   }
 
 }

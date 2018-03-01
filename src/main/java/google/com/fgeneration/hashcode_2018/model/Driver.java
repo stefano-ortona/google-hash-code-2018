@@ -66,4 +66,9 @@ public class Driver {
     this.lastPositon = lastPositon;
   }
 
+  @Override
+  public String toString() {
+    return "[Pos:" + this.lastPositon + ", nextTime:" + this.nextAvailableTime + "]";
+  }
+
 }
