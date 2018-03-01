@@ -12,17 +12,17 @@ import google.com.fgeneration.hashcode_2018.utils.Utils;
 public abstract class BestScoreRide {
 
 	public Ride getBestRide(Driver driver, CityStatus status) {
-		Map<Integer, Ride> scoreMap = new HashMap<>();
+		Map<Double, Ride> scoreMap = new HashMap<>();
 		for (Ride ride : status.getRides()) {
 			if (isValid(driver, ride)) {
 				scoreMap.put(getScore(driver, ride, status), ride);
 			} else {
-				scoreMap.put(-1, ride);
+				scoreMap.put(Double.MIN_VALUE, ride);
 			}
 		}
 
-		int maxScore = Collections.max(scoreMap.keySet());
-		if (maxScore == -1) {
+		double maxScore = Collections.max(scoreMap.keySet());
+		if (maxScore == Double.MIN_VALUE) {
 			return null;
 		}
 
@@ -33,6 +33,6 @@ public abstract class BestScoreRide {
 		return driver.getNextAvailableTime() + Utils.getDistance(ride.getStart(), ride.getEnd()) < ride.getMaxEndTime();
 	}
 
-	public abstract int getScore(Driver driver, Ride ride, CityStatus status);
+	public abstract double getScore(Driver driver, Ride ride, CityStatus status);
 
 }
