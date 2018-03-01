@@ -5,6 +5,8 @@
  */
 package google.com.fgeneration.hashcode_2018;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +23,7 @@ import google.com.fgeneration.hashcode_2018.model.CityStatus;
 import google.com.fgeneration.hashcode_2018.model.Driver;
 import google.com.fgeneration.hashcode_2018.model.Intersection;
 import google.com.fgeneration.hashcode_2018.model.Ride;
+import google.com.fgeneration.hashcode_2018.model.utils.OutputWriter;
 
 /**
  * Unit test
@@ -39,7 +42,7 @@ public class AppTest {
   }
 
   @Test
-  public void testExample() {
+  public void testExample() throws FileNotFoundException, UnsupportedEncodingException {
     System.out.println("TEST PRINT %%% Test 0");
     System.out.println("TEST PRINT %%% ");
     // create drivers
@@ -49,9 +52,9 @@ public class AppTest {
     drivers.add(driver0);
     drivers.add(driver1);
     // create riders
-    final Ride ride0 = new Ride(0, new Intersection(0, 0), new Intersection(3, 2), 2, 9);
-    final Ride ride1 = new Ride(1, new Intersection(2, 1), new Intersection(0, 0), 0, 9);
-    final Ride ride2 = new Ride(1, new Intersection(0, 2), new Intersection(2, 0), 0, 9);
+    final Ride ride0 = new Ride(0, new Intersection(0, 0), new Intersection(1, 3), 2, 9);
+    final Ride ride1 = new Ride(1, new Intersection(1, 2), new Intersection(1, 0), 0, 9);
+    final Ride ride2 = new Ride(2, new Intersection(2, 0), new Intersection(2, 2), 0, 9);
     final List<Ride> rides = new ArrayList<Ride>();
     rides.add(ride0);
     rides.add(ride1);
@@ -92,6 +95,8 @@ public class AppTest {
     Assert.assertTrue(output.get(driver0).contains(ride0));
     Assert.assertEquals(1, output.get(driver1).size());
     Assert.assertTrue(output.get(driver1).contains(ride2));
+    
+    OutputWriter.writeToFile("src/main/resources/google/com/fgeneration/hashcode_2018/output/test.in", output);
   }
 
 }

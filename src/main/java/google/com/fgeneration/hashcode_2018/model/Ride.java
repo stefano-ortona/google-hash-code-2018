@@ -95,6 +95,10 @@ public class Ride {
   public void setMaxEndTime(int maxEndTime) {
     this.maxEndTime = maxEndTime;
   }
+  
+  public int getId() {
+	  return this.id;
+  }
 
   Intersection end;
   int minStartTime;
