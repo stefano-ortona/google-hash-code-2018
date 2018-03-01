@@ -17,9 +17,9 @@ import google.com.fgeneration.hashcode_2018.utils.Utils;
 public class AssignDriverLogic {
   private static final Logger LOGGER = LoggerFactory.getLogger(AssignDriverLogic.class);
 
-  public Map<Driver, List<Ride>> assignAllRides(final CityStatus status) {
+  public Map<Integer, List<Ride>> assignAllRides(final CityStatus status) {
 
-    final Map<Driver, List<Ride>> output = Maps.newHashMap();
+    final Map<Integer, List<Ride>> output = Maps.newHashMap();
     int totScore = 0;
     boolean isFinished = false;
     for (int instant = 0; instant < status.getMaxTime(); instant++) {
@@ -37,9 +37,9 @@ public class AssignDriverLogic {
             totScore += status.getBonus();
           }
           this.modifyDriver(driver, curRide);
-          final List<Ride> curDriverRide = output.getOrDefault(driver, Lists.newArrayList());
+          final List<Ride> curDriverRide = output.getOrDefault(driver.getId(), Lists.newArrayList());
           curDriverRide.add(curRide);
-          output.put(driver, curDriverRide);
+          output.put(driver.getId(), curDriverRide);
         } else {
           status.getDrivers().remove(driver);
         }
