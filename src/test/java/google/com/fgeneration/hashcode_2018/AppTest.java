@@ -18,7 +18,7 @@ import org.junit.Test;
 
 import google.com.fgeneration.hashcode_2018.logic.AssignDriverLogic;
 import google.com.fgeneration.hashcode_2018.logic.BestScoreRide;
-import google.com.fgeneration.hashcode_2018.logic.NearestScoreRide;
+import google.com.fgeneration.hashcode_2018.logic.MixedScoreRide;
 import google.com.fgeneration.hashcode_2018.model.CityStatus;
 import google.com.fgeneration.hashcode_2018.model.Driver;
 import google.com.fgeneration.hashcode_2018.model.Intersection;
@@ -60,7 +60,7 @@ public class AppTest {
     rides.add(ride1);
     rides.add(ride2);
     // create city status
-    final BestScoreRide score = new NearestScoreRide();
+    final BestScoreRide score = new MixedScoreRide();
     final CityStatus status = new CityStatus(score, 2, 3, 4);
     status.setDrivers(drivers);
     status.setRides(rides);

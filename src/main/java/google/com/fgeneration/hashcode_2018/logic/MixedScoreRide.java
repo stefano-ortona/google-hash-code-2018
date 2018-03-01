@@ -5,7 +5,7 @@ import google.com.fgeneration.hashcode_2018.model.Driver;
 import google.com.fgeneration.hashcode_2018.model.Ride;
 import google.com.fgeneration.hashcode_2018.utils.Utils;
 
-public class NearestScoreRide extends BestScoreRide {
+public class MixedScoreRide extends BestScoreRide {
 	
 	private static double DISTANCE_WEIGHT = 1.0;
 	private static double RIDE_LENGHT_WEIGHT = 1.0;
