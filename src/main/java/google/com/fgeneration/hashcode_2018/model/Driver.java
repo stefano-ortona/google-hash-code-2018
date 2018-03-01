@@ -49,6 +49,10 @@ public class Driver {
     lastPositon = new Intersection(0, 0);
     this.id = id;
   }
+  
+  public int getId() {
+    return this.id;
+  }
 
   public int getNextAvailableTime() {
     return nextAvailableTime;
