@@ -2,6 +2,7 @@ package google.com.fgeneration.hashcode_2018.logic;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ public class AssignDriverLogic {
   private static final Logger LOGGER = LoggerFactory.getLogger(AssignDriverLogic.class);
 
   public Map<Integer, List<Ride>> assignAllRides(final CityStatus status) {
+    final int totPosScore = computeTotPossibleScore(status.getRides(), status.getBonus());
 
     final Map<Integer, List<Ride>> output = Maps.newHashMap();
     int totScore = 0;
@@ -50,8 +52,14 @@ public class AssignDriverLogic {
         }
       }
     }
-    LOGGER.info("Total score for the current solution: '{}'.", totScore);
+    LOGGER.info("Total score for the current solution: '{}' (Max possible score: '{}')", totScore, totPosScore);
     return output;
+  }
+
+  private int computeTotPossibleScore(List<Ride> rides, int bonus) {
+    final AtomicInteger totScore = new AtomicInteger(0);
+    rides.forEach(r -> totScore.getAndAdd(Utils.getDistance(r.getStart(), r.getEnd()) + bonus));
+    return totScore.get();
   }
 
   private void modifyDriver(Driver driver, Ride ride) {

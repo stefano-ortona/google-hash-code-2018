@@ -67,35 +67,34 @@ public class AppTest {
     status.setMaxTime(10);
 
     // get the output
-    final Map<Driver, List<Ride>> output = logic.assignAllRides(status);
+    final Map<Integer, List<Ride>> output = logic.assignAllRides(status);
 
     final List<Ride> takenRides = new ArrayList<Ride>();
     // check the output
-    for (final Driver d : output.keySet()) {
-      Assert.assertTrue(drivers.contains(d));
-      final List<Ride> driver_rides = output.get(d);
+    for (final int id : output.keySet()) {
+      final List<Ride> driver_rides = output.get(id);
       System.out.print("TEST PRINT %%% Driver ");
-      System.out.println("TEST PRINT %%% " + d.getId());
+      System.out.println("TEST PRINT %%% " + id);
       System.out.println("TEST PRINT %%% ");
       for (final Ride r : driver_rides) {
-//        Assert.assertFalse(takenRides.contains(r));
+        // Assert.assertFalse(takenRides.contains(r));
         System.out.print("TEST PRINT %%% Rides: ");
         System.out.println("TEST PRINT %%% " + r);
         takenRides.add(r);
-//        Assert.assertTrue(takenRides.contains(r));
+        // Assert.assertTrue(takenRides.contains(r));
       }
       System.out.println("TEST PRINT %%% -----------------------------");
       System.out.println("TEST PRINT %%% -----------------------------");
     }
     System.out.println("TEST PRINT %%% ################");
     System.out.println("TEST PRINT %%% ################");
-    
+
     Assert.assertEquals(2, output.keySet().size());
     Assert.assertEquals(1, output.get(driver0).size());
     Assert.assertTrue(output.get(driver0).contains(ride0));
     Assert.assertEquals(1, output.get(driver1).size());
     Assert.assertTrue(output.get(driver1).contains(ride2));
-    
+
     OutputWriter.writeToFile("src/main/resources/google/com/fgeneration/hashcode_2018/output/test.in", output);
   }
 

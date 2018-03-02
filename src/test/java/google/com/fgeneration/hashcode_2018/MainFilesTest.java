@@ -12,7 +12,7 @@ import com.google.common.collect.Lists;
 
 import google.com.fgeneration.hashcode_2018.logic.AssignDriverLogic;
 import google.com.fgeneration.hashcode_2018.logic.BestScoreRide;
-import google.com.fgeneration.hashcode_2018.logic.NearestScoreRide;
+import google.com.fgeneration.hashcode_2018.logic.PredictiveScoreRide;
 import google.com.fgeneration.hashcode_2018.model.CityStatus;
 import google.com.fgeneration.hashcode_2018.model.Driver;
 import google.com.fgeneration.hashcode_2018.model.Ride;
@@ -24,7 +24,7 @@ public class MainFilesTest {
 
   @BeforeClass
   public static void bringUp() {
-    score = new NearestScoreRide();
+    score = new PredictiveScoreRide();
   }
 
   @Test
@@ -35,7 +35,7 @@ public class MainFilesTest {
 
   @Test
   public void testSetB() {
-    final String path = "b_example.in";
+    final String path = "b_should_be_easy.in";
     generalTest(path);
   }
 
@@ -70,7 +70,7 @@ public class MainFilesTest {
     status.setMaxTime(frB.getStepsAmount());
     status.setRides(frB.getRides());
     final AssignDriverLogic logic = new AssignDriverLogic();
-    final Map<Driver, List<Ride>> out = logic.assignAllRides(status);
+    final Map<Integer, List<Ride>> out = logic.assignAllRides(status);
     try {
       OutputWriter.writeToFile(path + ".out", out);
     } catch (final FileNotFoundException e) {
