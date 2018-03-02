@@ -12,7 +12,7 @@ import com.google.common.collect.Lists;
 
 import google.com.fgeneration.hashcode_2018.logic.AssignDriverLogic;
 import google.com.fgeneration.hashcode_2018.logic.BestScoreRide;
-import google.com.fgeneration.hashcode_2018.logic.PredictiveScoreRide;
+import google.com.fgeneration.hashcode_2018.logic.WeightedAverageScore;
 import google.com.fgeneration.hashcode_2018.model.CityStatus;
 import google.com.fgeneration.hashcode_2018.model.Driver;
 import google.com.fgeneration.hashcode_2018.model.Ride;
@@ -24,7 +24,8 @@ public class MainFilesTest {
 
   @BeforeClass
   public static void bringUp() {
-    score = new PredictiveScoreRide();
+    // score = new PredictiveScoreRide();
+    score = new WeightedAverageScore();
   }
 
   @Test

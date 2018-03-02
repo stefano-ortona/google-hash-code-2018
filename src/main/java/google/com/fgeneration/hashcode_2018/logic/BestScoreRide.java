@@ -20,12 +20,12 @@ public abstract class BestScoreRide {
       if (isValid(driver, ride)) {
         scoreMap.put(getScore(driver, ride, status), ride);
       } else {
-        scoreMap.put(Double.MIN_VALUE, ride);
+        scoreMap.put(Double.MAX_VALUE, ride);
       }
     }
 
-    final double maxScore = Collections.max(scoreMap.keySet());
-    if (maxScore == Double.MIN_VALUE) {
+    final double maxScore = Collections.min(scoreMap.keySet());
+    if (maxScore == Double.MAX_VALUE) {
       return null;
     }
 
