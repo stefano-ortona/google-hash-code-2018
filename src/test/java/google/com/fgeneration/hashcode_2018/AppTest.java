@@ -16,6 +16,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.google.common.util.concurrent.AtomicDouble;
+
 import google.com.fgeneration.hashcode_2018.logic.AssignDriverLogic;
 import google.com.fgeneration.hashcode_2018.logic.BestScoreRide;
 import google.com.fgeneration.hashcode_2018.logic.MixedScoreRide;
@@ -67,7 +69,7 @@ public class AppTest {
     status.setMaxTime(10);
 
     // get the output
-    final Map<Integer, List<Ride>> output = logic.assignAllRides(status);
+    final Map<Integer, List<Ride>> output = logic.assignAllRides(status, new AtomicDouble());
 
     final List<Ride> takenRides = new ArrayList<Ride>();
     // check the output

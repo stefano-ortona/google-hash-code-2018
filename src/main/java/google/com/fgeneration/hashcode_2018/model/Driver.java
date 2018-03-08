@@ -1,7 +1,20 @@
 package google.com.fgeneration.hashcode_2018.model;
 
+import google.com.fgeneration.hashcode_2018.utils.Utils;
+
 public class Driver {
   int id;
+  int savedScore = 0;
+
+  private Ride previouslyAssignedRide;
+
+  public Ride getPreviouslyAssignedRide() {
+    return previouslyAssignedRide;
+  }
+
+  public void setPreviouslyAssignedRide(Ride previouslyAssignedRide) {
+    this.previouslyAssignedRide = previouslyAssignedRide;
+  }
 
   @Override
   public int hashCode() {
@@ -49,7 +62,7 @@ public class Driver {
     lastPositon = new Intersection(0, 0);
     this.id = id;
   }
-  
+
   public int getId() {
     return this.id;
   }
@@ -73,6 +86,17 @@ public class Driver {
   @Override
   public String toString() {
     return "[Pos:" + this.lastPositon + ", nextTime:" + this.nextAvailableTime + "]";
+  }
+
+  public void incrementSavedScore(Ride ride, int bonus) {
+    this.savedScore = Utils.getDistance(ride.getStart(), ride.getEnd());
+    if (Utils.gotBonusForRide(this, ride)) {
+      this.savedScore = bonus;
+    }
+  }
+
+  public int getSavedScore() {
+    return this.savedScore;
   }
 
 }
